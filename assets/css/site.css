@@ -1,0 +1,88 @@
+/* Master Management site: design tokens and page layout. Tokens mirror the Master Management design system. */
+:root, .mm-light {
+  --surface: #f3f3f5; --surface-raised: #ffffff; --surface-sage: #d5e7cd; --line: #dfe1e4; --line-strong: #8a8d86;
+  --ink: #191919; --ink-muted: #5c5f58; --deep-teal: #004052; --teal: #077d7e; --butter: #ffeb99; --butter-bright: #ede32f;
+  --mint: #a8dba6; --green: #47d37d; --green-deep: #2ba589; --leaf: #67ab55; --teal-text: #077d7e; --blue: #004aad;
+  --action: #004052; --on-action: #ffeb99; --on-deep: #ffffff; --focus: #077d7e; --surface-hover: #eef0f2; --skeleton: #e7e9ec;
+  --success-bg: #ddf2e3; --success-text: #1e6b3a; --success-fill: #1f8a4c;
+  --warning-bg: #fde9c4; --warning-text: #7a4a00; --warning-fill: #b87400;
+  --danger-bg: #fbe1dc; --danger-text: #a3281a; --danger-fill: #c73a2b;
+  --font-sans: Gordita, "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px; --space-10: 128px;
+  --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px; --radius-xl: 40px; --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(0,64,82,0.06), 0 8px 24px rgba(0,64,82,0.08);
+  --shadow-float: 0 12px 40px rgba(0,64,82,0.16);
+  --icon-sm: 16px; --icon-md: 20px; --icon-lg: 24px; --icon-xl: 48px;
+  --container: 1200px; --container-narrow: 760px;
+  color: var(--ink);
+}
+[data-theme="dark"] {
+  --surface: #004052; --surface-raised: #0b4f63; --surface-sage: #0a3542; --line: #1f5d70; --line-strong: #7fa9b4;
+  --ink: #f3f3f5; --ink-muted: #a8dba6; --leaf: #88c89e; --teal-text: #a8dba6; --blue: #9ec3ff;
+  --action: #ffeb99; --on-action: #004052; --focus: #ffeb99; --surface-hover: #125a6f; --skeleton: #1a5a6d;
+  --success-bg: #12573f; --success-text: #a8e6bd; --success-fill: #5fd38f;
+  --warning-bg: #5a4410; --warning-text: #ffd98a; --warning-fill: #f5c04a;
+  --danger-bg: #5e2a26; --danger-text: #ffc2b8; --danger-fill: #ff8f80;
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.25), 0 8px 24px rgba(0,0,0,0.25);
+  --shadow-float: 0 12px 40px rgba(0,0,0,0.4);
+  color: var(--ink);
+}
+body { margin: 0; background: #f3f3f5; font-family: "Plus Jakarta Sans", system-ui, sans-serif; }
+a { color: #077d7e; } a:hover { color: #004052; }
+html { scroll-behavior: smooth; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
+.sec { padding: 96px 0; }
+.band { margin: 0 16px; border-radius: 40px; }
+.hero-h1 { font-size: 88px; line-height: 88px; }
+.nav-links { display: flex; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font: 600 14px/20px var(--font-sans); color: var(--ink); }
+.field input, .field textarea, .field select { font: 400 16px/24px var(--font-sans); color: var(--ink); background: var(--surface-raised); border: 1.5px solid var(--line-strong); border-radius: 8px; padding: 10px 14px; min-height: 44px; box-sizing: border-box; width: 100%; }
+.field input:focus-visible, .field textarea:focus-visible, .field select:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.field select { cursor: pointer; }
+.field label .mm-icon { color: var(--teal-text); }
+.demo-backdrop { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(0, 32, 41, 0.45); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.demo-glass { position: relative; width: 100%; max-width: 560px; max-height: calc(100vh - 32px); overflow-y: auto; box-sizing: border-box; padding: 32px; border-radius: 24px; background: rgba(255, 255, 255, 0.72); -webkit-backdrop-filter: blur(28px) saturate(160%); backdrop-filter: blur(28px) saturate(160%); border: 1px solid rgba(255, 255, 255, 0.7); box-shadow: 0 24px 80px rgba(0, 32, 41, 0.35); }
+.demo-glass .field input, .demo-glass .field textarea { background: rgba(255, 255, 255, 0.85); }
+.demo-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, 0.8); box-shadow: inset 0 0 0 1px #dfe1e4; color: #191919; display: grid; place-items: center; cursor: pointer; }
+.demo-close:hover { background: #ffffff; }
+.demo-close:focus-visible { outline: 2px solid #077d7e; outline-offset: 2px; }
+.nav-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.nav-actions { justify-self: end; display: flex; gap: 8px; align-items: center; position: relative; }
+.login-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 18px; border: 0; border-radius: 999px; background: transparent; color: #191919; box-shadow: inset 0 0 0 1.5px #8a8d86; font: 600 15px/20px var(--font-sans); cursor: pointer; transition: background-color .15s ease; }
+.login-toggle:hover { background: #eef0f2; }
+.login-toggle:focus-visible { outline: 2px solid #077d7e; outline-offset: 2px; }
+.login-menu { position: absolute; top: calc(100% + 10px); right: 0; z-index: 30; width: 280px; margin: 0; padding: 8px; list-style: none; background: #ffffff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,64,82,0.16), inset 0 0 0 1px #dfe1e4; }
+.login-menu a { display: flex; gap: 12px; align-items: center; padding: 12px; border-radius: 10px; color: #191919; text-decoration: none; font: 600 15px/20px var(--font-sans); }
+.login-menu a:hover { background: #eef0f2; color: #191919; }
+.login-menu a:focus-visible { outline: 2px solid #077d7e; outline-offset: -2px; }
+.login-menu small { display: block; font: 400 13px/18px var(--font-sans); color: #5c5f58; }
+.login-menu .mm-icon { color: #077d7e; }
+@media (max-width: 1100px) {
+  .nav-links { display: none; }
+  .nav-bar { grid-template-columns: auto 1fr; }
+}
+@media (max-width: 520px) {
+  .nav-demo { display: none; }
+}
+@media (max-width: 900px) {
+  .hero-h1 { font-size: 52px; line-height: 56px; }
+}
+@media (max-width: 720px) {
+  .sec { padding: 64px 0; }
+  .band { margin: 0 8px; border-radius: 24px; }
+  .wrap { padding: 0 16px; }
+  .hero-h1 { font-size: 44px; line-height: 48px; }
+  .mm-sh-title { font-size: 34px; line-height: 40px; }
+}
+
+/* Keep the nav on one line at phone widths */
+.login-toggle, .mm-lockup { white-space: nowrap; }
+@media (max-width: 520px) {
+  .nav-bar { gap: 8px; padding: 8px !important; }
+  .mm-lockup-badge { font-size: 15px !important; padding: 8px 12px; }
+  .login-toggle { padding: 10px 14px; }
+}
+@media (max-width: 720px) {
+  section[aria-labelledby="hero-title"] { padding: 56px 0 64px !important; }
+}
