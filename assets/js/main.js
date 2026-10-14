@@ -116,4 +116,27 @@
       ['Message', val(contact, 'msg')]
     ]);
   });
+  // Try Manje: the demo panel slides up after a moment, and stays closed once the visitor closes it
+  var manjeLauncher = document.getElementById('manje-launcher');
+  var manjePanel = document.getElementById('manje-panel');
+  var MANJE_KEY = 'mm-manje-closed';
+  function setManje(open, remember) {
+    manjePanel.hidden = !open;
+    manjeLauncher.hidden = open;
+    manjeLauncher.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (remember) {
+      try { if (open) localStorage.removeItem(MANJE_KEY); else localStorage.setItem(MANJE_KEY, '1'); } catch (err) { /* storage blocked: fine */ }
+    }
+  }
+  manjeLauncher.addEventListener('click', function () { setManje(true, true); });
+  manjePanel.querySelector('[data-manje-close]').addEventListener('click', function () {
+    setManje(false, true);
+    manjeLauncher.focus();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !manjePanel.hidden) { setManje(false, true); manjeLauncher.focus(); }
+  });
+  var manjeClosed = false;
+  try { manjeClosed = localStorage.getItem(MANJE_KEY) === '1'; } catch (err) { /* storage blocked */ }
+  if (!manjeClosed) setTimeout(function () { if (manjePanel.hidden) setManje(true, false); }, 1500);
 })();
