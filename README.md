@@ -29,6 +29,6 @@ Any static host works: GitHub Pages (Settings → Pages → deploy from `main`, 
 ## Before going live
 
 - **Lead capture:** the Book a demo modal and the contact form open the visitor's email app, addressed to hello@mastermanagement.africa. To receive leads without that step, point both forms at a form service (Formspree, HubSpot) or your own endpoint in `assets/js/main.js`.
-- **Login links:** Owner, Tenant and Service Provider Login point to `#owner-login`, `#tenant-login` and `#provider-login`. Replace them with the portal URLs.
+- **Login links:** Owner, Tenant, Property Manager and Service Provider Login open the demo sign-in at `https://app.mastermanagement.africa/sign-in?as=owner` (`tenant`, `agent`, `provider`).
 - **Placeholders:** the CSOS statistics need a source line, and the Privacy and Terms links need pages.
 - **Font:** the design system names Gordita first. The site falls back to Plus Jakarta Sans unless Gordita is licensed and added.
