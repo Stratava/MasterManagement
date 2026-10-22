@@ -252,20 +252,141 @@
 
   <!-- Pricing -->
   <section id="pricing" class="sec" aria-labelledby="pricing-title">
-    <div class="wrap">
-      <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center; background: var(--surface-raised); border-radius: 24px; padding: 48px; box-shadow: var(--shadow-card);">
-        <div style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-          <span class="mm-tag mm-tag-neutral"><span class="mm-tag-dot" aria-hidden="true"></span>Pricing</span>
-          <h2 id="pricing-title" class="mm-sh-title" style="margin: 0;">Simple monthly pricing. <span class="mm-muted">Quoted for your portfolio.</span></h2>
-          <p style="margin: 4px 0 0; font: 400 18px/28px var(--font-sans); color: var(--ink-muted);">Master Management is priced per scheme, per month, so your costs grow only as your portfolio does. Book a demo and we’ll prepare a quote for the schemes you manage.</p>
+    <div class="wrap" style="display: flex; flex-direction: column; gap: 48px;">
+      <div class="mm-sh" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+        <span class="mm-tag mm-tag-neutral"><span class="mm-tag-dot" aria-hidden="true"></span>Pricing</span>
+        <h2 id="pricing-title" class="mm-sh-title" style="margin: 0;">Start free. <span class="mm-muted">Scale when you’re ready.</span></h2>
+        <p style="margin: 4px 0 0; font: 400 18px/28px var(--font-sans); color: var(--ink-muted);">Master Management is priced per scheme, per month. Standard is free. Plus is priced on the complexity of the scheme you manage. Premium modules add to either, and you can switch them on or off at any time.</p>
+      </div>
+
+      <div class="price-grid">
+        <div class="mm-tier">
+          <span class="mm-tier-label">Standard</span>
+          <h3 class="mm-tier-name">Run every scheme from one place</h3>
+          <div class="mm-tier-rate">Free</div>
+          <ul class="price-list">
+            <li>Core platform: portfolio, approvals, cases, arrears, meetings, levies, records and owner portal</li>
+            <li>Managing director dashboard</li>
+            <li>Works with your accounting software</li>
+            <li>Email and online logging</li>
+            <li>Rules-based, by email and online</li>
+            <li>Email support</li>
+          </ul>
         </div>
-        <div data-theme="dark" style="flex: 1 1 280px; min-width: 0; background: var(--surface); color: var(--ink); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start;">
-          <span style="font: 600 12px/16px var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--mint);">From</span>
-          <span style="font: 700 48px/52px var(--font-sans); letter-spacing: -0.03em; color: var(--butter-bright);">R1,500</span>
-          <span style="font: 400 15px/22px var(--font-sans); color: var(--mint);">per scheme per month. Excl. VAT.</span>
-          <span style="padding-top: 12px;"><button type="button" class="mm-btn mm-btn-primary mm-btn-lg" data-open-demo>Book a demo</button></span>
+        <div class="mm-tier mm-tier-featured" data-theme="dark">
+          <span class="mm-tier-label">Recommended</span>
+          <h3 class="mm-tier-name">Plus</h3>
+          <div class="mm-tier-rate">From R1,500 <small>per scheme per month</small></div>
+          <ul class="price-list">
+            <li>Everything in Standard</li>
+            <li>Manje, our WhatsApp assistant</li>
+            <li>AI across every feature</li>
+            <li>AI productivity reporting: an estimate of the hours you could save</li>
+            <li>AI-assisted support, with a person when needed</li>
+          </ul>
+          <a class="mm-btn mm-btn-primary" href="#price-calc" style="align-self: flex-start; margin-top: auto;">Work out your price</a>
+        </div>
+        <div class="mm-tier">
+          <span class="mm-tier-label">Premium modules</span>
+          <h3 class="mm-tier-name">Add to any scheme</h3>
+          <div class="mm-tier-rate">From R350 <small>per scheme per month</small></div>
+          <ul class="price-list">
+            <li><strong>Findings (Insight to Fix):</strong> compliance status across every scheme, with the fix explained</li>
+            <li><strong>CSOS filings:</strong> deadlines tracked and filings prepared on time</li>
+            <li><strong>Finance insights:</strong> good accounting practice, checked against your books</li>
+            <li>Optional on any tier, priced by number of units</li>
+          </ul>
         </div>
       </div>
+
+      <div id="price-calc" class="price-calc" role="group" aria-labelledby="calc-title">
+        <div class="price-calc-inputs">
+          <div>
+            <h3 id="calc-title" class="mm-tier-name" style="margin: 0;">Work out the price of a scheme</h3>
+            <p style="margin: 8px 0 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted);">You pay for the complexity you manage. Add up the floor area, score six factors from 0 to 3, and read off the price. It starts filled in with an example 161-unit estate.</p>
+          </div>
+          <div class="price-fields">
+            <div class="field"><label for="p-sqm">Total section floor area (sqm)</label><input id="p-sqm" type="number" min="0" step="1" inputmode="numeric" value="13685"></div>
+            <div class="field"><label for="p-units">Number of units</label><input id="p-units" type="number" min="1" step="1" inputmode="numeric" value="161"></div>
+            <div class="field"><label for="p-f0">Utilities</label>
+              <select id="p-f0" data-factor><option value="0">Prepaid or individual municipal accounts</option><option value="1" selected>Sub-metered recovery of one utility</option><option value="2">Recovery of several (solar, generator, borehole, gas)</option><option value="3">As complex, plus runs its own supply</option></select></div>
+            <div class="field"><label for="p-f1">Occupancy mix</label>
+              <select id="p-f1" data-factor><option value="0">Under 25% rented</option><option value="1" selected>25% to 50% rented</option><option value="2">50% to 75% rented</option><option value="3">Over 75% rented</option></select></div>
+            <div class="field"><label for="p-f2">Shared infrastructure</label>
+              <select id="p-f2" data-factor><option value="0">Common property only (gardens, driveways, refuse)</option><option value="1" selected>One of: lifts, pool, gym</option><option value="2">Two or more of those, or staff employed by the body corporate</option><option value="3">Amenities open to the public, or commercial operations</option></select></div>
+            <div class="field"><label for="p-f3">Building age and condition</label>
+              <select id="p-f3" data-factor><option value="0">Under 5 years</option><option value="1" selected>5 to 10 years</option><option value="2">10 to 25 years, or more than 15% arrears</option><option value="3">Over 25 years, major maintenance backlog, or more than 15% arrears</option></select></div>
+            <div class="field"><label for="p-f4">Security operations</label>
+              <select id="p-f4" data-factor><option value="0">Basic access control</option><option value="1" selected>Guard gate</option><option value="2">Guards plus patrols, CCTV monitoring or armed response</option><option value="3">Security staff employed by the body corporate, or several security vendors</option></select></div>
+            <div class="field"><label for="p-f5">Physical layout</label>
+              <select id="p-f5" data-factor><option value="0">Single block (6 floors and under)</option><option value="1">Two or three buildings</option><option value="2" selected>Four or more buildings, or multiple phases</option><option value="3">Multiple phases with commercial sections</option></select></div>
+          </div>
+          <fieldset class="price-mods">
+            <legend>Premium modules</legend>
+            <label><input type="checkbox" id="p-m0" data-module="0" checked> Findings (Insight to Fix)</label>
+            <label><input type="checkbox" id="p-m1" data-module="1" checked> CSOS filings</label>
+            <label><input type="checkbox" id="p-m2" data-module="2" checked> Finance insights</label>
+          </fieldset>
+        </div>
+
+        <div class="price-calc-result" data-theme="dark" aria-live="polite">
+          <span class="price-eyebrow">Your scheme</span>
+          <div id="r-tier" class="price-tier">Tier 2: Moderate</div>
+          <div id="r-points" class="price-sub">7 of 18 points</div>
+          <div class="price-line"><span>Plus <span id="r-rate">R0.25</span> per sqm</span><span id="r-plus">R3,421</span></div>
+          <div class="price-line" id="r-mods-row"><span>Premium modules</span><span id="r-mods">R2,650</span></div>
+          <div class="price-total"><span id="r-monthly">R6,071</span><small>per month, excl. VAT</small></div>
+          <div class="price-line"><span>Per unit</span><span id="r-unit">R37.71</span></div>
+          <p id="r-note" class="price-sub" hidden></p>
+          <div class="price-founders">
+            <span class="price-eyebrow">Founders programme</span>
+            <div class="price-line"><span>Full year at the monthly rate</span><span id="r-year">R72,852</span></div>
+            <div class="price-line"><span>Less 15% for paying upfront</span><span id="r-off">&minus;R10,928</span></div>
+            <div class="price-total price-total-sm"><span id="r-upfront">R61,924</span><small>paid upfront for the year, about <span id="r-permonth">R5,160</span> a month, plus priority servicing</small></div>
+          </div>
+          <button type="button" class="mm-btn mm-btn-primary" id="r-quote" data-open-demo>Get a quote for this scheme</button>
+        </div>
+      </div>
+
+      <div class="price-ref">
+        <div>
+          <h3 class="mm-tier-name" style="margin: 0 0 12px;">Tier rates</h3>
+          <table class="price-table">
+            <thead><tr><th scope="col">Tier</th><th scope="col">Points</th><th scope="col">Rate per sqm per month</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1 Simple</th><td>0 to 4</td><td>R0.15</td></tr>
+              <tr><th scope="row">2 Moderate</th><td>5 to 9</td><td>R0.25</td></tr>
+              <tr><th scope="row">3 Complex</th><td>10 to 13</td><td>R0.40</td></tr>
+              <tr><th scope="row">4 Highly complex</th><td>14 to 18, or on quote</td><td>R0.58</td></tr>
+            </tbody>
+          </table>
+          <p class="price-foot">Price per scheme = total section floor area &times; tier rate. Minimum fee: R1,500 per scheme per month.</p>
+        </div>
+        <div>
+          <h3 class="mm-tier-name" style="margin: 0 0 12px;">Premium modules, per scheme per month</h3>
+          <table class="price-table">
+            <thead><tr><th scope="col">Module</th><th scope="col">Up to 100 units</th><th scope="col">101 to 250</th><th scope="col">251+</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Findings (Insight to Fix)</th><td>R750</td><td>R1,250</td><td>R1,950</td></tr>
+              <tr><th scope="row">CSOS filings</th><td>R350</td><td>R350</td><td>R450</td></tr>
+              <tr><th scope="row">Finance insights</th><td>R650</td><td>R1,050</td><td>R1,500</td></tr>
+            </tbody>
+          </table>
+          <p class="price-foot">Switch on or off at any time, no minimum term.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="mm-tier-name" style="margin: 0 0 16px;">How we start: eight weeks to proof, on one of your own schemes</h3>
+        <div class="price-steps">
+          <div class="mm-nc mm-nc-mint"><span class="mm-nc-num">01</span><h4 class="mm-nc-title">Evaluate</h4><p class="mm-nc-body">One week exploring Master Management with demo schemes, and reviewing the Master Service Agreement and Terms of Use.</p><p class="mm-nc-out">1 week</p></div>
+          <div class="mm-nc mm-nc-green"><span class="mm-nc-num">02</span><h4 class="mm-nc-title">Decide to pilot</h4><p class="mm-nc-body">Choose the pilot scheme, agree what success looks like, and sign the pilot agreement and POPIA consent.</p><p class="mm-nc-out">Decision</p></div>
+          <div class="mm-nc mm-nc-deep"><span class="mm-nc-num">03</span><h4 class="mm-nc-title">Onboard and pilot</h4><p class="mm-nc-body">One week to onboard and train your team and migrate your data, then six weeks live with your team approving every action. Weekly feedback throughout.</p><p class="mm-nc-out">7 weeks</p></div>
+          <div class="mm-nc mm-nc-mint"><span class="mm-nc-num">04</span><h4 class="mm-nc-title">Decide how to continue</h4><p class="mm-nc-body">Join the Founders programme and pay the year upfront for 15% off, or continue month to month.</p><p class="mm-nc-out">Decision</p></div>
+        </div>
+      </div>
+
+      <p class="price-foot" style="margin: 0;">One-year contracts, renewable. Team training is quoted separately. WhatsApp broadcasts are billed as once-off campaigns at cost. All prices excl. VAT.</p>
     </div>
   </section>
 
@@ -276,7 +397,7 @@
         <span class="mm-tag mm-tag-neutral"><span class="mm-tag-dot" aria-hidden="true"></span>Questions</span>
         <h2 id="faq-title" class="mm-sh-title" style="margin: 0;">What Managing Agents ask. <span class="mm-muted">Answered plainly.</span></h2>
       </div>
-      <div class="mm-faq" data-faq><div class="mm-faq-item mm-faq-open"><button type="button" class="mm-faq-q" aria-expanded="true" aria-controls="mm-faq-0"><span>Does the AI make decisions on our behalf?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-0">No. The AI prepares the work, and nothing goes ahead until a named, authorised person approves it.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-1"><span>How do owners and tenants reach us?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-1" hidden>On WhatsApp, by email or on the scheme portal, whichever suits them. Replies come back on the same channel.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-2"><span>Which schemes can we run on Master Management?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-2" hidden>Sectional title schemes governed by trustees with a managing agent, or by an EMA, from mid-size schemes upwards. Homeowners’ associations are planned for a later phase.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-3"><span>Who owns the scheme’s data?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-3" hidden>The scheme does. If a scheme leaves, its records go with it in a readable report and a standard export.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-4"><span>Does it work with our accounting system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-4" hidden>Yes. Master Management connects to your existing accounting system.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-5"><span>How does pricing work?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-5" hidden>You pay a monthly fee per scheme, from R1,500 excl. VAT. Book a demo and we’ll quote for your portfolio.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-6"><span>Do you offer an evaluation or demo of the system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-6" hidden>Yes. Book a demo and we’ll walk you through the system with sample schemes, or scan the QR code to try our WhatsApp assistant, Manje, yourself. To explore it yourself, email us and we’ll provide you with demo access.</p></div></div>
+      <div class="mm-faq" data-faq><div class="mm-faq-item mm-faq-open"><button type="button" class="mm-faq-q" aria-expanded="true" aria-controls="mm-faq-0"><span>Does the AI make decisions on our behalf?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-0">No. The AI prepares the work, and nothing goes ahead until a named, authorised person approves it.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-1"><span>How do owners and tenants reach us?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-1" hidden>On WhatsApp, by email or on the scheme portal, whichever suits them. Replies come back on the same channel.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-2"><span>Which schemes can we run on Master Management?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-2" hidden>Sectional title schemes governed by trustees with a managing agent, or by an EMA, from mid-size schemes upwards. Homeowners’ associations are planned for a later phase.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-3"><span>Who owns the scheme’s data?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-3" hidden>The scheme does. If a scheme leaves, its records go with it in a readable report and a standard export.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-4"><span>Does it work with our accounting system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-4" hidden>Yes. Master Management connects to your existing accounting system.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-5"><span>How does pricing work?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-5" hidden>Standard is free. Plus is a monthly fee per scheme, based on the scheme’s floor area and how complex it is to manage, from R1,500 excl. VAT. Premium modules are optional and priced by number of units. Use the calculator in the pricing section, or book a demo and we’ll quote for your portfolio.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-6"><span>Do you offer an evaluation or demo of the system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-6" hidden>Yes. Book a demo and we’ll walk you through the system with sample schemes, or scan the QR code to try our WhatsApp assistant, Manje, yourself. To explore it yourself, email us and we’ll provide you with demo access.</p></div></div>
     </div>
   </section>
 
@@ -284,15 +405,15 @@
   <section id="founding-partner" data-theme="dark" class="band" aria-labelledby="cta-title" style="background: var(--surface); color: var(--ink); padding: 96px 0;">
     <div class="wrap" style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
       <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px; align-items: flex-start;">
-        <span class="mm-tag mm-tag-butter"><span class="mm-tag-dot" aria-hidden="true"></span>Founding partner offer</span>
-        <h2 id="cta-title" style="margin: 0; font: 600 64px/68px var(--font-sans); letter-spacing: -0.035em; color: var(--on-deep); text-wrap: balance;">Become a founding partner. <span style="color: var(--butter);">10&ndash;15% off.</span></h2>
-        <p style="margin: 0; font: 400 20px/30px var(--font-sans); color: var(--mint);">Our first partners get 10&ndash;15% off our pricing when they pay the annual fee up front, depending on the size of the scheme. Open until 31 December 2026.</p>
-        <a class="mm-btn mm-btn-primary mm-btn-lg" href="mailto:hello@mastermanagement.africa?subject=Founding%20partner%20offer">Email us to become a founding partner<span class="mm-arrow" aria-hidden="true">&#8599;</span></a>
+        <span class="mm-tag mm-tag-butter"><span class="mm-tag-dot" aria-hidden="true"></span>Founders programme</span>
+        <h2 id="cta-title" style="margin: 0; font: 600 64px/68px var(--font-sans); letter-spacing: -0.035em; color: var(--on-deep); text-wrap: balance;">Join the Founders programme. <span style="color: var(--butter);">15% off.</span></h2>
+        <p style="margin: 0; font: 400 20px/30px var(--font-sans); color: var(--mint);">Pay the full year upfront and receive 15% off our pricing, plus priority servicing. One-year contracts, renewable. Open until April 2027.</p>
+        <a class="mm-btn mm-btn-primary mm-btn-lg" href="mailto:hello@mastermanagement.africa?subject=Founders%20programme">Email us to join the Founders programme<span class="mm-arrow" aria-hidden="true">&#8599;</span></a>
       </div>
       <div class="mm-on-deep" style="flex: 1 1 380px; min-width: 0;">
-        <div class="mm-step"><span class="mm-step-num" aria-hidden="true">01</span><div><h4 class="mm-step-title">10&ndash;15% off our pricing, depending on the size of your scheme</h4></div></div>
-        <div class="mm-step"><span class="mm-step-num" aria-hidden="true">02</span><div><h4 class="mm-step-title">Pay the annual fee up front</h4></div></div>
-        <div class="mm-step"><span class="mm-step-num" aria-hidden="true">03</span><div><h4 class="mm-step-title">Open until 31 December 2026</h4></div></div>
+        <div class="mm-step"><span class="mm-step-num" aria-hidden="true">01</span><div><h4 class="mm-step-title">15% off our pricing</h4></div></div>
+        <div class="mm-step"><span class="mm-step-num" aria-hidden="true">02</span><div><h4 class="mm-step-title">Pay the full year upfront, with priority servicing</h4></div></div>
+        <div class="mm-step"><span class="mm-step-num" aria-hidden="true">03</span><div><h4 class="mm-step-title">Open until April 2027</h4></div></div>
       </div>
     </div>
   </section>
@@ -308,6 +429,7 @@
             <a href="mailto:hello@mastermanagement.africa" style="display: inline-flex; gap: 10px; align-items: center; font-weight: 600;"><i class="mm-icon ph-light ph-envelope-simple mm-icon-md" aria-hidden="true"></i>hello@mastermanagement.africa</a>
             <a href="https://www.mastermanagement.africa" style="display: inline-flex; gap: 10px; align-items: center; font-weight: 600;"><i class="mm-icon ph-light ph-globe-simple mm-icon-md" aria-hidden="true"></i>www.mastermanagement.africa</a>
           </div>
+          <p style="margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted);">Managing agent support: <a href="mailto:support@mastermanagement.africa">support@mastermanagement.africa</a><br>Owners and tenants: <a href="mailto:hello@mastermanagement.co.za">hello@mastermanagement.co.za</a></p>
           </div>
         </div>
         <form id="contact-form" aria-label="Contact form" style="flex: 1 1 440px; min-width: 0; background: var(--surface-raised); border-radius: 24px; padding: 32px; box-shadow: var(--shadow-card); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
