@@ -284,7 +284,7 @@
             <li>AI productivity reporting: an estimate of the hours you could save</li>
             <li>AI-assisted support, with a person when needed</li>
           </ul>
-          <a class="mm-btn mm-btn-primary" href="#price-tiers" style="align-self: flex-start; margin-top: auto;">See price by tier</a>
+          <a class="mm-btn mm-btn-primary" href="#price-calc" style="align-self: flex-start; margin-top: auto;">Work out your price</a>
         </div>
         <div class="mm-tier">
           <span class="mm-tier-label">Premium modules</span>
@@ -299,36 +299,48 @@
         </div>
       </div>
 
-      <div>
-        <h3 id="price-tiers" class="mm-tier-name" style="margin: 0 0 8px;">Plus, by scheme size</h3>
-        <p style="margin: 0 0 24px; font: 400 16px/26px var(--font-sans); color: var(--ink-muted); max-width: 760px;">You pay for the complexity you manage. Per unit figures assume an average unit of 60 to 110 sqm.</p>
-        <div class="price-tiers">
-        <div class="mm-tier">
-          <span class="mm-tier-label">Tier 1</span>
-          <h3 class="mm-tier-name">Simple</h3>
-          <div class="mm-tier-rate">R9 to R17 <small>per unit per month</small></div>
-          <div class="mm-tier-pts">R0.15 per sqm</div>
+      <div id="price-calc" class="price-calc" role="group" aria-labelledby="calc-title">
+        <div class="price-calc-inputs">
+          <div>
+            <h3 id="calc-title" class="mm-tier-name" style="margin: 0;">Work out the price of a scheme</h3>
+            <p style="margin: 8px 0 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted);">You pay for the complexity you manage. Enter the floor area, pick a complexity level, and see how the price changes. It starts filled in with an example 161-unit estate.</p>
+          </div>
+          <div class="price-fields">
+            <div class="field"><label for="p-sqm">Total section floor area (sqm)</label><input id="p-sqm" type="number" min="0" step="1" inputmode="numeric" value="13685"></div>
+            <div class="field"><label for="p-units">Number of units</label><input id="p-units" type="number" min="1" step="1" inputmode="numeric" value="161"></div>
+          </div>
+          <fieldset class="price-levels">
+            <legend>Complexity</legend>
+            <label><input type="radio" name="p-level" value="0"> Low</label>
+            <label><input type="radio" name="p-level" value="1" checked> Moderate</label>
+            <label><input type="radio" name="p-level" value="2"> High</label>
+            <label><input type="radio" name="p-level" value="3"> Very high</label>
+          </fieldset>
+          <p class="price-foot" style="margin: 0;">Not sure which level fits? We work with you during onboarding to determine the complexity and needs of your complex, and confirm your price before you commit.</p>
+          <fieldset class="price-mods">
+            <legend>Premium modules</legend>
+            <label><input type="checkbox" id="p-m0" data-module="0" checked> Findings (Insight to Fix)</label>
+            <label><input type="checkbox" id="p-m1" data-module="1" checked> CSOS filings</label>
+            <label><input type="checkbox" id="p-m2" data-module="2" checked> Finance insights</label>
+          </fieldset>
         </div>
-        <div class="mm-tier mm-tier-featured" data-theme="dark">
-          <span class="mm-tier-label">Tier 2</span>
-          <h3 class="mm-tier-name">Moderate</h3>
-          <div class="mm-tier-rate">R15 to R28 <small>per unit per month</small></div>
-          <div class="mm-tier-pts">R0.25 per sqm</div>
+
+        <div class="price-calc-result" data-theme="dark" aria-live="polite">
+          <span class="price-eyebrow">Your scheme</span>
+          <div id="r-tier" class="price-tier">Moderate complexity</div>
+          <div class="price-line"><span>Plus <span id="r-rate">R0.25</span> per sqm</span><span id="r-plus">R3,421</span></div>
+          <div class="price-line" id="r-mods-row"><span>Premium modules</span><span id="r-mods">R2,650</span></div>
+          <div class="price-total"><span id="r-monthly">R6,071</span><small>per month, excl. VAT</small></div>
+          <div class="price-line"><span>Per unit</span><span id="r-unit">R37.71</span></div>
+          <p id="r-note" class="price-sub" hidden></p>
+          <div class="price-founders">
+            <span class="price-eyebrow">Founders programme</span>
+            <div class="price-line"><span>Full year at the monthly rate</span><span id="r-year">R72,852</span></div>
+            <div class="price-line"><span>Less 15% for paying upfront</span><span id="r-off">&minus;R10,928</span></div>
+            <div class="price-total price-total-sm"><span id="r-upfront">R61,924</span><small>paid upfront for the year, about <span id="r-permonth">R5,160</span> a month, plus priority servicing</small></div>
+          </div>
+          <button type="button" class="mm-btn mm-btn-primary" id="r-quote" data-open-demo>Get a quote for this scheme</button>
         </div>
-        <div class="mm-tier">
-          <span class="mm-tier-label">Tier 3</span>
-          <h3 class="mm-tier-name">Complex</h3>
-          <div class="mm-tier-rate">R24 to R44 <small>per unit per month</small></div>
-          <div class="mm-tier-pts">R0.40 per sqm</div>
-        </div>
-        <div class="mm-tier">
-          <span class="mm-tier-label">Tier 4</span>
-          <h3 class="mm-tier-name">Highly complex</h3>
-          <div class="mm-tier-rate">R35 to R64 <small>per unit per month</small></div>
-          <div class="mm-tier-pts">R0.58 per sqm &middot; priced on quote</div>
-        </div>
-        </div>
-        <p class="price-foot">Plus is priced at the tier rate per sqm of total section floor area, with a minimum fee of R1,500 per scheme per month, so small schemes cost more per unit. Premium modules are extra. Book a demo and we&rsquo;ll score your schemes and quote.</p>
       </div>
 
       <div class="price-ref">
@@ -367,7 +379,7 @@
         <span class="mm-tag mm-tag-neutral"><span class="mm-tag-dot" aria-hidden="true"></span>Questions</span>
         <h2 id="faq-title" class="mm-sh-title" style="margin: 0;">What Managing Agents ask. <span class="mm-muted">Answered plainly.</span></h2>
       </div>
-      <div class="mm-faq" data-faq><div class="mm-faq-item mm-faq-open"><button type="button" class="mm-faq-q" aria-expanded="true" aria-controls="mm-faq-0"><span>Does the AI make decisions on our behalf?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-0">No. The AI prepares the work, and nothing goes ahead until a named, authorised person approves it.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-1"><span>How do owners and tenants reach us?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-1" hidden>On WhatsApp, by email or on the scheme portal, whichever suits them. Replies come back on the same channel.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-2"><span>Which schemes can we run on Master Management?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-2" hidden>Sectional title schemes governed by trustees with a managing agent, or by an EMA, from mid-size schemes upwards. Homeowners’ associations are planned for a later phase.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-3"><span>Who owns the scheme’s data?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-3" hidden>The scheme does. If a scheme leaves, its records go with it in a readable report and a standard export.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-4"><span>Does it work with our accounting system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-4" hidden>Yes. Master Management connects to your existing accounting system.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-5"><span>How does pricing work?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-5" hidden>Standard is free. Plus is a monthly fee per scheme, based on the scheme’s floor area and how complex it is to manage, from R1,500 excl. VAT. Premium modules are optional and priced by number of units. See the per unit range for each complexity tier in the pricing section, or book a demo and we’ll score and quote your portfolio.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-6"><span>Do you offer an evaluation or demo of the system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-6" hidden>Yes. Book a demo and we’ll walk you through the system with sample schemes, or scan the QR code to try our WhatsApp assistant, Manje, yourself. To explore it yourself, email us and we’ll provide you with demo access.</p></div></div>
+      <div class="mm-faq" data-faq><div class="mm-faq-item mm-faq-open"><button type="button" class="mm-faq-q" aria-expanded="true" aria-controls="mm-faq-0"><span>Does the AI make decisions on our behalf?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-0">No. The AI prepares the work, and nothing goes ahead until a named, authorised person approves it.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-1"><span>How do owners and tenants reach us?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-1" hidden>On WhatsApp, by email or on the scheme portal, whichever suits them. Replies come back on the same channel.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-2"><span>Which schemes can we run on Master Management?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-2" hidden>Sectional title schemes governed by trustees with a managing agent, or by an EMA, from mid-size schemes upwards. Homeowners’ associations are planned for a later phase.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-3"><span>Who owns the scheme’s data?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-3" hidden>The scheme does. If a scheme leaves, its records go with it in a readable report and a standard export.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-4"><span>Does it work with our accounting system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-4" hidden>Yes. Master Management connects to your existing accounting system.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-5"><span>How does pricing work?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-5" hidden>Standard is free. Plus is a monthly fee per scheme, based on the scheme’s floor area and how complex it is to manage, from R1,500 excl. VAT. Premium modules are optional and priced by number of units. Use the calculator in the pricing section to see how the price changes with complexity. During onboarding we work with you to determine the complexity and needs of each complex, and confirm the price.</p></div><div class="mm-faq-item"><button type="button" class="mm-faq-q" aria-expanded="false" aria-controls="mm-faq-6"><span>Do you offer an evaluation or demo of the system?</span><span class="mm-faq-icon" aria-hidden="true">+</span></button><p class="mm-faq-a" id="mm-faq-6" hidden>Yes. Book a demo and we’ll walk you through the system with sample schemes, or scan the QR code to try our WhatsApp assistant, Manje, yourself. To explore it yourself, email us and we’ll provide you with demo access.</p></div></div>
     </div>
   </section>
 
