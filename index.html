@@ -433,7 +433,9 @@
     <div class="demo-backdrop" data-demo-backdrop>
       <div class="demo-glass mm-light" role="dialog" aria-modal="true" aria-labelledby="demo-title">
         <button type="button" class="demo-close" aria-label="Close" data-close-demo><i class="mm-icon ph ph-x mm-icon-md" aria-hidden="true"></i></button>
-        <form id="demo-form" novalidate>
+        <form id="demo-form" name="demo" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="demo">
+          <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div style="display: flex; flex-direction: column; gap: 20px;">
             <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding-right: 48px;">
               <span class="mm-tag mm-tag-teal">Book a demo</span>
@@ -451,13 +453,14 @@
               <p style="margin: 0; max-width: 26em; font: 400 13px/20px var(--font-sans); color: var(--ink-muted);">Sent to hello@mastermanagement.africa. We use your details only to arrange the demo, in line with POPIA.</p>
               <button type="submit" class="mm-btn mm-btn-primary mm-btn-lg">Request demo</button>
             </div>
+            <p id="demo-error" role="alert" hidden style="margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink);"></p>
           </div>
         </form>
         <div id="demo-done" hidden>
           <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 8px 48px 8px 0;">
             <span style="width: 56px; height: 56px; border-radius: 999px; background: var(--deep-teal); color: var(--butter); display: grid; place-items: center;"><i class="mm-icon ph ph-check mm-icon-lg" aria-hidden="true"></i></span>
             <h2 id="demo-done-title" style="margin: 0; font: 600 30px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--ink);">Thank you. <span style="color: var(--ink-muted);">We’ll be in touch to arrange a time.</span></h2>
-            <p style="margin: 0; font: 400 16px/26px var(--font-sans); color: var(--ink-muted);">Your request is addressed to hello@mastermanagement.africa. Send the email that opened to complete it.</p>
+            <p style="margin: 0; font: 400 16px/26px var(--font-sans); color: var(--ink-muted);">Your request has reached hello@mastermanagement.africa.</p>
             <button type="button" class="mm-btn mm-btn-secondary" data-close-demo>Close</button>
           </div>
         </div>

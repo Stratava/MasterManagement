@@ -28,7 +28,7 @@ Any static host works: GitHub Pages (Settings → Pages → deploy from `main`, 
 
 ## Before going live
 
-- **Lead capture:** the Book a demo modal and the contact form open the visitor's email app, addressed to hello@mastermanagement.africa. To receive leads without that step, point both forms at a form service (Formspree, HubSpot) or your own endpoint in `assets/js/main.js`.
+- **Lead capture:** the Book a demo modal submits to Netlify Forms (form name `demo`). In the Netlify site, turn on form detection (Forms → Enable form detection) and add an email notification to hello@mastermanagement.africa, or submissions are stored but nobody is told. If the submit fails, the modal offers the visitor's email app instead. The contact form still opens the visitor's email app.
 - **Login links:** Owner, Tenant, Property Manager and Service Provider Login open the demo sign-in at `https://app.mastermanagement.africa/sign-in?as=owner` (`tenant`, `agent`, `provider`).
 - **Placeholders:** the CSOS statistics need a source line, and the Privacy and Terms links need pages.
 - **Font:** the design system names Gordita first. The site falls back to Plus Jakarta Sans unless Gordita is licensed and added.

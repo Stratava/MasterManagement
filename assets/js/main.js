@@ -41,6 +41,7 @@
     setMenu(false);
     demoForm.hidden = false;
     demoDone.hidden = true;
+    demoError.hidden = true;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     var first = demoForm.querySelector('input');
@@ -63,10 +64,13 @@
     if (e.target === e.currentTarget) closeDemo();
   });
 
-  demoForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+  // Submissions go to Netlify Forms, which emails them on. If that fails, offer the email route instead.
+  var demoError = document.getElementById('demo-error');
+  var demoSubmit = demoForm.querySelector('[type="submit"]');
+
+  function demoMailto() {
     var company = val(demoForm, 'company');
-    window.location.href = mailto('Demo request' + (company ? ': ' + company : ''), [
+    return mailto('Demo request' + (company ? ': ' + company : ''), [
       ['Name', val(demoForm, 'name')],
       ['Company', company],
       ['Email', val(demoForm, 'email')],
@@ -74,8 +78,44 @@
       ['Schemes under management', val(demoForm, 'schemes')],
       ['Message', val(demoForm, 'msg')]
     ]);
-    demoForm.hidden = true;
-    demoDone.hidden = false;
+  }
+
+  function showDemoError(text, withEmailLink) {
+    demoError.textContent = text;
+    if (withEmailLink) {
+      var a = document.createElement('a');
+      a.href = demoMailto();
+      a.textContent = 'email your request instead';
+      a.style.color = 'var(--teal-text)';
+      demoError.append(' Please try again, or ', a, '.');
+    }
+    demoError.hidden = false;
+  }
+
+  demoForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    demoError.hidden = true;
+    if (!val(demoForm, 'name') || !/^\S+@\S+\.\S+$/.test(val(demoForm, 'email'))) {
+      showDemoError('Please add your name and a valid work email.', false);
+      return;
+    }
+    demoSubmit.disabled = true;
+    demoSubmit.textContent = 'Sending…';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(demoForm)).toString()
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      demoForm.reset();
+      demoForm.hidden = true;
+      demoDone.hidden = false;
+    }).catch(function () {
+      showDemoError('Your request didn’t send.', true);
+    }).then(function () {
+      demoSubmit.disabled = false;
+      demoSubmit.textContent = 'Request demo';
+    });
   });
 
   document.addEventListener('keydown', function (e) {
